@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Neobrutalist style favicon -->
+  <rect x="2" y="4" width="26" height="26" rx="6" fill="#F17804" stroke="#000" stroke-width="2"/>
+  <rect x="0" y="2" width="26" height="26" rx="6" fill="#F17804" stroke="#000" stroke-width="2"/>
+  <!-- Interrobang style mark -->
+  <text x="13" y="22" font-family="Arial Black, sans-serif" font-size="18" font-weight="900" fill="#000" text-anchor="middle">‽</text>
+</svg>
