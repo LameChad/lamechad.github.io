@@ -213,9 +213,8 @@ body {
   border-radius: var(--border-radius);
   border: var(--border-width) solid #000;
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
-  /* width: 220px; */
-   height: 220px
-   aspect-ratio: 16 / 9;
+  width: 160px;
+  aspect-ratio: 3 / 4;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -255,6 +254,7 @@ body {
   font-size: 0.875rem;
   color: #333;
   font-weight: 500;
+  margin-top: auto;
 }
 
 /* Card Colors */
