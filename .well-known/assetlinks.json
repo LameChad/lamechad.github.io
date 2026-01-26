@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.bardic.prompted",
+      "sha256_cert_fingerprints": [
+        "9C:37:8A:6E:92:D5:94:7B:83:BA:26:03:55:1E:76:0A:15:12:40:A8:6E:CC:2B:7D:52:42:2D:29:5A:CD:11:41"
+      ]
+    }
+  }
+]
