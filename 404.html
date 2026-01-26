@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Page Not Found | prompted</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Opening prompted...</title>
+  <link rel="stylesheet" href="/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Open Graph tags for social sharing -->
+  <meta property="og:title" content="Check this out on prompted">
+  <meta property="og:description" content="Get creative prompts. Record your response. Share with friends.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="prompted">
   
   <style>
-    .error-page {
+    .redirect-page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -21,59 +27,67 @@
       text-align: center;
     }
     
-    .error-card {
-      background: var(--color-amber);
+    .redirect-card {
+      background: white;
       padding: var(--space-xl) var(--space-2xl);
       border-radius: var(--border-radius);
       border: var(--border-width) solid #000;
       box-shadow: 6px 8px 0 #000;
-      max-width: 500px;
-      animation: shake 0.5s ease-in-out;
+      max-width: 420px;
+      width: 100%;
     }
     
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-10px) rotate(-2deg); }
-      40% { transform: translateX(10px) rotate(2deg); }
-      60% { transform: translateX(-10px) rotate(-1deg); }
-      80% { transform: translateX(10px) rotate(1deg); }
-    }
-    
-    .error-code {
+    .redirect-logo {
       font-family: var(--font-display);
-      font-size: clamp(5rem, 15vw, 10rem);
+      font-size: 2rem;
       font-weight: 700;
-      line-height: 1;
-      margin-bottom: var(--space-sm);
-      color: #000;
-      text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+      color: var(--brand-orange);
+      text-shadow: 
+        1px 2px 0 #000,
+        -0.5px -0.5px 0 #000,
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;
+      margin-bottom: var(--space-md);
     }
     
-    .error-message {
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid var(--bg-offwhite);
+      border-top-color: var(--brand-orange);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto var(--space-md);
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .redirect-message {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-xs);
     }
     
-    .error-subtitle {
-      color: #333;
+    .redirect-subtitle {
+      color: #666;
       margin-bottom: var(--space-lg);
+      font-size: 0.95rem;
     }
     
-    .error-prompt {
-      background: white;
-      padding: var(--space-md);
-      border-radius: calc(var(--border-radius) / 2);
-      border: var(--border-width) solid #000;
-      margin-bottom: var(--space-lg);
-      font-family: var(--font-display);
-      font-weight: 500;
+    .store-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
     }
     
-    .error-home-btn {
+    .store-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-xs);
       background: #000;
       color: white;
@@ -87,67 +101,215 @@
       transition: transform 0.15s, box-shadow 0.15s;
     }
     
-    .error-home-btn:hover {
+    .store-btn:hover {
       transform: translate(2px, 2px);
       box-shadow: 1px 2px 0 var(--brand-orange);
     }
     
-    .error-home-btn svg {
-      width: 20px;
-      height: 20px;
+    .store-btn.ios {
+      background: #000;
     }
     
-    /* Floating decorative elements */
-    .error-page::before,
-    .error-page::after {
-      content: '?';
-      position: fixed;
+    .store-btn.android {
+      background: #3DDC84;
+      color: #000;
+      box-shadow: 3px 4px 0 #000;
+    }
+    
+    .store-btn.android:hover {
+      box-shadow: 1px 2px 0 #000;
+    }
+    
+    .store-btn svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+      color: #999;
+      font-size: 0.875rem;
+    }
+    
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+    
+    .home-link {
+      color: var(--brand-orange);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    
+    .home-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Hide spinner and show buttons when not redirecting */
+    .redirect-page.no-redirect .spinner {
+      display: none;
+    }
+    
+    .redirect-page.no-redirect .redirect-message {
+      display: none;
+    }
+    
+    /* Error state for true 404s */
+    .error-state {
+      display: none;
+    }
+    
+    .redirect-page.is-404 .redirect-state {
+      display: none;
+    }
+    
+    .redirect-page.is-404 .error-state {
+      display: block;
+    }
+    
+    .error-code {
       font-family: var(--font-display);
-      font-size: 8rem;
+      font-size: 4rem;
       font-weight: 700;
-      color: rgba(0,0,0,0.05);
-      pointer-events: none;
+      color: var(--color-amber);
+      text-shadow: 2px 3px 0 #000;
+      margin-bottom: var(--space-sm);
     }
     
-    .error-page::before {
-      top: 10%;
-      left: 5%;
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .error-page::after {
-      bottom: 10%;
-      right: 5%;
-      animation: float 6s ease-in-out infinite reverse;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(-10deg); }
-      50% { transform: translateY(-20px) rotate(10deg); }
+    .error-prompt {
+      background: var(--color-amber);
+      padding: var(--space-md);
+      border-radius: calc(var(--border-radius) / 2);
+      border: var(--border-width) solid #000;
+      margin: var(--space-md) 0;
+      font-family: var(--font-display);
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
-  <div class="error-page">
-    <a href="/" class="logo" style="position: absolute; top: var(--space-lg); left: var(--space-lg);">prompted</a>
-    
-    <div class="error-card">
-      <div class="error-code">404</div>
-      <h1 class="error-message">Page not found!</h1>
-      <p class="error-subtitle">Looks like this prompt got lost in the void.</p>
-      
-      <div class="error-prompt">
-        "Find your way back home?"
+  <div class="redirect-page" id="redirectPage">
+    <div class="redirect-card">
+      <!-- Redirect State (for deep links) -->
+      <div class="redirect-state">
+        <div class="redirect-logo">prompted</div>
+        <div class="spinner" id="spinner"></div>
+        <h1 class="redirect-message">Opening the app...</h1>
+        <p class="redirect-subtitle" id="subtitle">If nothing happens, get the app below</p>
+        
+        <div class="store-buttons">
+          <a href="#" class="store-btn ios" id="iosBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download on App Store
+          </a>
+          <a href="#" class="store-btn android" id="androidBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            </svg>
+            Get it on Google Play
+          </a>
+        </div>
+        
+        <div class="divider">or</div>
+        <a href="/" class="home-link">Learn more about prompted →</a>
       </div>
       
-      <a href="/" class="error-home-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        Back to Home
-      </a>
+      <!-- Error State (for true 404s) -->
+      <div class="error-state">
+        <div class="error-code">404</div>
+        <h1 class="redirect-message" style="display: block;">Page not found!</h1>
+        <p class="redirect-subtitle">Looks like this prompt got lost in the void.</p>
+        <div class="error-prompt">"Find your way back home?"</div>
+        <a href="/" class="store-btn ios" style="width: 100%;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Back to Home
+        </a>
+      </div>
     </div>
   </div>
+
+  <script>
+    (function() {
+      // ============================================
+      // CONFIGURATION - Update these URLs!
+      // ============================================
+      const CONFIG = {
+        // Replace with your actual App Store URL once published
+        appStoreUrl: 'https://apps.apple.com/app/prompted/id0000000000',
+        
+        // Replace with your actual Play Store URL once published
+        playStoreUrl: 'https://play.google.com/store/apps/details?id=io.bardic.prompted',
+        
+        // Your app's custom URL scheme (for attempting to open the app directly)
+        appScheme: 'prompted://',
+        
+        // Paths that should trigger app redirect (not 404)
+        deepLinkPaths: ['/post/', '/user/']
+      };
+      
+      // ============================================
+      // DETECTION
+      // ============================================
+      const path = window.location.pathname;
+      const isDeepLink = CONFIG.deepLinkPaths.some(p => path.startsWith(p));
+      
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+      const isAndroid = /android/i.test(userAgent);
+      
+      const page = document.getElementById('redirectPage');
+      const iosBtn = document.getElementById('iosBtn');
+      const androidBtn = document.getElementById('androidBtn');
+      const subtitle = document.getElementById('subtitle');
+      
+      // Set store URLs
+      iosBtn.href = CONFIG.appStoreUrl;
+      androidBtn.href = CONFIG.playStoreUrl;
+      
+      // ============================================
+      // ROUTING LOGIC
+      // ============================================
+      if (isDeepLink) {
+        // This is a deep link - try to redirect to store
+        subtitle.textContent = 'Redirecting you to the app store...';
+        
+        if (isIOS) {
+          // iOS: Redirect to App Store
+          // The Universal Link should handle opening the app if installed
+          // If not installed, we redirect to the App Store
+          setTimeout(() => {
+            window.location.href = CONFIG.appStoreUrl;
+          }, 100);
+        } else if (isAndroid) {
+          // Android: Redirect to Play Store
+          // App Links should handle opening the app if installed
+          setTimeout(() => {
+            window.location.href = CONFIG.playStoreUrl;
+          }, 100);
+        } else {
+          // Desktop or unknown - show both options
+          page.classList.add('no-redirect');
+          subtitle.textContent = 'Get the prompted app to view this content';
+        }
+      } else {
+        // This is a true 404 - show error state
+        page.classList.add('is-404');
+      }
+    })();
+  </script>
 </body>
 </html>
