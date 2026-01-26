@@ -1,12 +1,19 @@
-
 {
   "applinks": {
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.io.bardic.prompted",
-        "paths": ["*"]
+        "appID": "XXXXXXXXXX.io.bardic.prompted",
+        "paths": [
+          "/post/*",
+          "/user/*"
+        ]
       }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "XXXXXXXXXX.io.bardic.prompted"
     ]
   }
 }
