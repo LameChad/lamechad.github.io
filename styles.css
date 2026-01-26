@@ -81,7 +81,7 @@ body {
 
 .logo {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 2.75rem;
   font-weight: 700;
   color: var(--brand-orange);
   text-shadow: 
@@ -213,7 +213,9 @@ body {
   border-radius: var(--border-radius);
   border: var(--border-width) solid #000;
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
-  width: 220px;
+  /* width: 220px; */
+   height: 220px
+   aspect-ratio: 9 / 16;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
