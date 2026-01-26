@@ -215,7 +215,7 @@ body {
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
   /* width: 220px; */
    height: 220px
-   aspect-ratio: 9 / 16;
+   aspect-ratio: 16 / 9;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
