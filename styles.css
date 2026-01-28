@@ -32,6 +32,7 @@
   /* Typography */
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
   
   /* Spacing */
   --space-xs: 0.5rem;
@@ -247,16 +248,17 @@ body {
 .prompt-card:nth-child(5) { top: 400px; left: 5%; }
 
 .prompt-text {
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-roboto);
+  font-weight: 500;
   font-size: 1rem;
   line-height: 1.3;
 }
 
 .prompt-time {
+  font-family: var(--font-roboto);
   font-size: 0.875rem;
   color: #333;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Card Colors */
