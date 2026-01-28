@@ -12,6 +12,58 @@
   
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="icon_logo.png">
+  
+  <style>
+    /* Additional styles for mystery and play cards */
+    .mystery-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .mystery-icon svg {
+      width: 60px;
+      height: 60px;
+      color: #000;
+    }
+    
+    .play-card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .play-button-wrapper {
+      background: white;
+      padding: 8px 16px;
+      border-radius: var(--border-radius);
+      border: 2px solid #000;
+      box-shadow: 2px 3px 0 #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-button-wrapper svg {
+      width: 25px;
+      height: 25px;
+      color: #000;
+    }
+    
+    .tap-to-play-text {
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #000;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrapper">
@@ -44,25 +96,46 @@
 
       <!-- Decorative Cards -->
       <div class="hero-visual">
+        <!-- Card 1: Question Mark (Mystery) -->
         <div class="prompt-card card-red" style="--delay: 0s">
-          <span class="prompt-text">"What's your hot take?"</span>
-          <span class="prompt-time">30s</span>
+          <div class="mystery-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM14 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+            </svg>
+          </div>
         </div>
+        
+        <!-- Card 2: Regular prompt -->
         <div class="prompt-card card-cyan" style="--delay: 0.1s">
           <span class="prompt-text">"Describe your perfect day"</span>
           <span class="prompt-time">60s</span>
         </div>
+        
+        <!-- Card 3: Question Mark (Mystery) -->
         <div class="prompt-card card-amber" style="--delay: 0.2s">
-          <span class="prompt-text">"Unpopular opinion?"</span>
-          <span class="prompt-time">30s</span>
+          <div class="mystery-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM14 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+            </svg>
+          </div>
         </div>
+        
+        <!-- Card 4: Regular prompt -->
         <div class="prompt-card card-purple" style="--delay: 0.3s">
           <span class="prompt-text">"What made you smile today?"</span>
           <span class="prompt-time">45s</span>
         </div>
+        
+        <!-- Card 5: Play Button (Bottom) -->
         <div class="prompt-card card-green" style="--delay: 0.4s">
-          <span class="prompt-text">"Your go-to comfort food?"</span>
-          <span class="prompt-time">30s</span>
+          <div class="play-card-content">
+            <div class="play-button-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5.14v14l11-7-11-7z"/>
+              </svg>
+            </div>
+            <span class="tap-to-play-text">Tap to Play</span>
+          </div>
         </div>
       </div>
     </main>
