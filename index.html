@@ -24,9 +24,8 @@
     }
     
     .mystery-icon svg {
-      width: 60px;
-      height: 60px;
-      color: #000;
+      width: 70px;
+      height: 70px;
     }
     
     .play-card-content {
@@ -99,33 +98,43 @@
         <!-- Card 1: Question Mark (Mystery) -->
         <div class="prompt-card card-red" style="--delay: 0s">
           <div class="mystery-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM14 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <defs>
+                <mask id="questionMask1">
+                  <circle cx="50" cy="50" r="45" fill="white"/>
+                  <text x="50" y="68" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="55" font-weight="700" fill="black">?</text>
+                </mask>
+              </defs>
+              <circle cx="50" cy="50" r="45" fill="black" mask="url(#questionMask1)"/>
             </svg>
-            <span class="prompt-time">15 seconds</span>
           </div>
         </div>
         
         <!-- Card 2: Regular prompt -->
         <div class="prompt-card card-cyan" style="--delay: 0.1s">
           <span class="prompt-text">"Describe your perfect day"</span>
-          <span class="prompt-time">60 seconds</span>
+          <span class="prompt-time">60s</span>
         </div>
         
         <!-- Card 3: Question Mark (Mystery) -->
         <div class="prompt-card card-amber" style="--delay: 0.2s">
           <div class="mystery-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM14 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <defs>
+                <mask id="questionMask2">
+                  <circle cx="50" cy="50" r="45" fill="white"/>
+                  <text x="50" y="68" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="55" font-weight="700" fill="black">?</text>
+                </mask>
+              </defs>
+              <circle cx="50" cy="50" r="45" fill="black" mask="url(#questionMask2)"/>
             </svg>
-            <span class="prompt-time">15 seconds</span>
           </div>
         </div>
         
         <!-- Card 4: Regular prompt -->
         <div class="prompt-card card-purple" style="--delay: 0.3s">
           <span class="prompt-text">"What made you smile today?"</span>
-          <span class="prompt-time">30 seconds</span>
+          <span class="prompt-time">45s</span>
         </div>
         
         <!-- Card 5: Play Button (Bottom) -->
