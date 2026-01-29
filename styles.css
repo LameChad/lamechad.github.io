@@ -210,7 +210,7 @@ body {
 
 .prompt-card {
   position: absolute;
-  padding: var(--space-sm);
+  padding: var(--space-md);
   border-radius: var(--border-radius);
   border: var(--border-width) solid #000;
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
