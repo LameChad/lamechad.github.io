@@ -257,7 +257,7 @@ body {
 
 .prompt-time {
   font-family: var(--font-roboto);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: #333;
   font-weight: 500;
    margin-top: 12px
