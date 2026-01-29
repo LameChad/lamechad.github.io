@@ -22,8 +22,8 @@
     }
     
     .mystery-icon svg {
-      width: 100px;
-      height: 100px;
+      width: 75px;
+      height: 75px;
     }
     
     .play-card-content {
@@ -60,6 +60,13 @@
       color: #000;
       text-transform: uppercase;
     }
+    
+    /* Override card positions for Option A layout */
+    .prompt-card:nth-child(1) { top: 0; left: 5%; }
+    .prompt-card:nth-child(2) { top: 60px; right: 10%; left: auto; }
+    .prompt-card:nth-child(3) { top: 150px; left: 35%; }
+    .prompt-card:nth-child(4) { top: 280px; left: 10%; right: auto; }
+    .prompt-card:nth-child(5) { top: 330px; right: 5%; left: auto; }
   </style>
 </head>
 <body>
@@ -91,10 +98,16 @@
         </div>
       </div>
 
-      <!-- Decorative Cards -->
+      <!-- Decorative Cards - Option A: Diagonal alternation -->
       <div class="hero-visual">
-        <!-- Card 1: Material Icons Help (Mystery) -->
-        <div class="prompt-card card-red" style="--delay: 0s">
+        <!-- Card 1: Text (top left) -->
+        <div class="prompt-card card-cyan" style="--delay: 0s">
+          <span class="prompt-text">What do you want to do when you grow up?</span>
+          <span class="prompt-time">60 seconds</span>
+        </div>
+        
+        <!-- Card 2: Mystery (top right) -->
+        <div class="prompt-card card-red" style="--delay: 0.1s">
           <div class="mystery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
@@ -103,30 +116,8 @@
           <span class="prompt-time">15 seconds</span>
         </div>
         
-        <!-- Card 2: Regular prompt -->
-        <div class="prompt-card card-cyan" style="--delay: 0.1s">
-          <span class="prompt-text">What do you want to do when you grow up?</span>
-          <span class="prompt-time">60 seconds</span>
-        </div>
-        
-        <!-- Card 3: Material Icons Help (Mystery) -->
-        <div class="prompt-card card-amber" style="--delay: 0.2s">
-          <div class="mystery-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
-            </svg>
-          </div>
-          <span class="prompt-time">300 seconds</span>
-        </div>
-        
-        <!-- Card 4: Regular prompt -->
-        <div class="prompt-card card-purple" style="--delay: 0.3s">
-          <span class="prompt-text">Do a little dance</span>
-          <span class="prompt-time">30 seconds</span>
-        </div>
-        
-        <!-- Card 5: Play Button (Bottom) -->
-        <div class="prompt-card card-green" style="--delay: 0.4s">
+        <!-- Card 3: Play Button (middle - focal point) -->
+        <div class="prompt-card card-green" style="--delay: 0.2s">
           <div class="play-card-content">
             <div class="play-button-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -135,6 +126,22 @@
             </div>
             <span class="tap-to-play-text">Tap to Play</span>
           </div>
+        </div>
+        
+        <!-- Card 4: Mystery (lower left) -->
+        <div class="prompt-card card-amber" style="--delay: 0.3s">
+          <div class="mystery-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+            </svg>
+          </div>
+          <span class="prompt-time">300 seconds</span>
+        </div>
+        
+        <!-- Card 5: Text (bottom right) -->
+        <div class="prompt-card card-purple" style="--delay: 0.4s">
+          <span class="prompt-text">Do a little dance</span>
+          <span class="prompt-time">30 seconds</span>
         </div>
       </div>
     </main>
