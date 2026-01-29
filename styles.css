@@ -210,7 +210,7 @@ body {
 
 .prompt-card {
   position: absolute;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   border-radius: var(--border-radius);
   border: var(--border-width) solid #000;
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
@@ -222,7 +222,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: var(--space-xs);
+  gap: var(--space-md);
   opacity: 0;
   transform: translateY(20px);
   animation: float-in 0.5s ease-out forwards;
