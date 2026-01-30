@@ -218,15 +218,15 @@ body {
   border-radius: var(--border-radius);
   border: var(--border-width) solid #000;
   box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
-  width: 110px;
+  width: 160px;
   aspect-ratio: 9 / 16;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   opacity: 0;
   transform: translateY(20px);
   animation: float-in 0.5s ease-out forwards;
@@ -264,7 +264,6 @@ body {
   font-size: 0.65rem;
   color: #333;
   font-weight: 500;
-   margin-top: 12px
 }
 
 /* Card Colors */
