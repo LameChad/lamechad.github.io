@@ -80,20 +80,25 @@ body {
   margin: 0 auto;
 }
 
-/* Wordmark — mirrors the app's TextLogoDecorated:
-   Roboto bold, otherOrange, hard (1,2)-ratio drop shadow,
-   thin 4-way outline (±0.25 at 31px, scaled) */
+/* Wordmark — mirrors the app's TextLogoDecorated: Roboto bold,
+   otherOrange, black border around each letter + offset drop shadow.
+   To adjust: the first 8 shadows are the letter border (bigger offsets
+   = thicker border), the last shadow is the drop (x y). */
 .logo {
   font-family: var(--font-roboto);
   font-size: 2.75rem;
   font-weight: 700;
   color: var(--brand-orange);
   text-shadow:
-    -0.35px -0.35px 0 #000,
-    0.35px -0.35px 0 #000,
-    0.35px 0.35px 0 #000,
-    -0.35px 0.35px 0 #000,
-    1.5px 3px 0 #000;
+    -1.25px 0 0 #000,
+    1.25px 0 0 #000,
+    0 -1.25px 0 #000,
+    0 1.25px 0 #000,
+    -0.9px -0.9px 0 #000,
+    0.9px -0.9px 0 #000,
+    0.9px 0.9px 0 #000,
+    -0.9px 0.9px 0 #000,
+    2px 3.5px 0 #000;
 }
 
 .nav {
@@ -338,6 +343,23 @@ body {
   opacity: 0.3;
 }
 
+/* The one-shot flame gets a white sticker badge so it doesn't
+   blend into the red card */
+.feature-number.flame {
+  opacity: 1;
+  font-size: 1.9rem;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 12px;
+  box-shadow: 2px 3px 0 #000;
+  width: 3.3rem;
+  height: 3.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-4deg);
+}
+
 .feature-card h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -439,11 +461,15 @@ body {
   font-weight: 700;
   color: var(--brand-orange);
   text-shadow:
-    -0.3px -0.3px 0 #000,
-    0.3px -0.3px 0 #000,
-    0.3px 0.3px 0 #000,
-    -0.3px 0.3px 0 #000,
-    1.3px 2.6px 0 #000;
+    -1.15px 0 0 #000,
+    1.15px 0 0 #000,
+    0 -1.15px 0 #000,
+    0 1.15px 0 #000,
+    -0.8px -0.8px 0 #000,
+    0.8px -0.8px 0 #000,
+    0.8px 0.8px 0 #000,
+    -0.8px 0.8px 0 #000,
+    1.8px 3.2px 0 #000;
 }
 
 .footer-links {
