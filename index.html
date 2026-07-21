@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>prompted — creative video prompts</title>
-  <meta name="description" content="Get creative prompts. Record your response. Share with friends. prompted is the app that sparks your creativity.">
+  <title>prompted — pick a prompt. play.</title>
+  <meta name="description" content="Wild video prompts, a ticking clock, no do-overs. Play the prompt, then see how everyone else played it. Free on iOS and Android.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="icon_logo.png">
-  
+
+  <!-- Social sharing -->
+  <meta property="og:title" content="prompted — pick a prompt. play.">
+  <meta property="og:description" content="Wild video prompts, a ticking clock, no do-overs. See how everyone plays the same prompt.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prompted.website/">
+  <meta property="og:site_name" content="prompted">
+  <meta property="og:image" content="https://prompted.website/icon_logo.png">
+  <meta name="twitter:card" content="summary">
+
   <style>
     /* Additional styles for mystery and play cards */
     .mystery-icon {
@@ -20,12 +29,12 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .mystery-icon svg {
-      width: 75px;
-      height: 75px;
+      width: 88px;
+      height: 88px;
     }
-    
+
     .play-card-content {
       display: flex;
       flex-direction: column;
@@ -35,10 +44,10 @@
       width: 100%;
       height: 100%;
     }
-    
+
     .play-button-wrapper {
       background: white;
-      padding: 6px 12px;
+      padding: 8px 14px;
       border-radius: var(--border-radius);
       border: 2px solid #000;
       box-shadow: 2px 3px 0 #000;
@@ -46,36 +55,33 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .play-button-wrapper svg {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       color: #000;
     }
-    
+
     .tap-to-play-text {
-      font-size: 0.6rem;
+      font-size: 0.75rem;
       font-weight: 900;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: #000;
       text-transform: uppercase;
     }
-    
-    /* Override card positions for Option A layout */
-    .prompt-card:nth-child(1) { top: 0; left: 5%; }
-    .prompt-card:nth-child(2) { top: 60px; right: 10%; left: auto; }
-    .prompt-card:nth-child(3) { top: 150px; left: 35%; }
-    .prompt-card:nth-child(4) { top: 280px; left: 10%; right: auto; }
-    .prompt-card:nth-child(5) { top: 330px; right: 5%; left: auto; }
   </style>
+  <noscript>
+    <style>.prompt-card, .feature-card { opacity: 1; }</style>
+  </noscript>
 </head>
 <body>
   <div class="page-wrapper">
     <!-- Header -->
     <header class="header">
-      <div class="logo">prompted</div>
+      <a href="/" class="logo">prompted</a>
       <nav class="nav">
-        <a href="#features" class="nav-link">Features</a>
+        <a href="#features" class="nav-link">How you play</a>
+        <a href="#daily" class="nav-link">Daily Drop</a>
         <a href="#download" class="nav-link btn-download">Get the App</a>
       </nav>
     </header>
@@ -86,16 +92,12 @@
         <h1 class="hero-title">
           Pick a prompt.<br>
           <span class="highlight">Play.</span><br>
-          Share the moment.
+          See how everyone<br>played it.
         </h1>
         <p class="hero-subtitle">
-          <span>Creative video prompts that spark authentic content.</span>
-          <span>No scripts. No overthinking. Just you.</span>
+          <span>Wild prompts, a ticking clock, and the whole community on camera.</span>
+          <span>No scripts. No do-overs. Just hit record.</span>
         </p>
-        <!-- <p class="hero-subtitle">
-          Creative video prompts that spark authentic content. 
-          No scripts. No overthinking. Just you.
-        </p> -->
         <div class="hero-cta">
           <a href="#download" class="btn btn-primary">Download for Android</a>
           <a href="#download" class="btn btn-secondary">Download for iOS</a>
@@ -127,7 +129,7 @@
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
             </svg>
           </div>
-          <span class="prompt-time">300 seconds</span>
+          <span class="prompt-time">45 seconds</span>
         </div>
 
         
@@ -153,22 +155,40 @@
 
     <!-- Features Section -->
     <section id="features" class="features">
-      <h2 class="section-title">How it works</h2>
+      <h2 class="section-title">How you play</h2>
       <div class="features-grid">
         <div class="feature-card card-orange">
           <div class="feature-number">1</div>
           <h3>Pick a Prompt</h3>
-          <p>Choose a prompt — could be funny, thoughtful, or a total mystery.</p>
+          <p>Funny, deep, or a total mystery — some prompts stay hidden until the clock starts.</p>
         </div>
         <div class="feature-card card-blue">
           <div class="feature-number">2</div>
           <h3>Play</h3>
-          <p>No retakes. Just seconds on the clock to capture authentic, in-the-moment you.</p>
+          <p>One take, a few seconds, no redos. Whatever happens, happens.</p>
         </div>
         <div class="feature-card card-pink">
           <div class="feature-number">3</div>
           <h3>Share & Discover</h3>
-          <p>Post your response and see how others answered the same prompt.</p>
+          <p>Post your take and see what everyone else did with the same prompt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Drop Section -->
+    <section id="daily" class="daily">
+      <div class="daily-card">
+        <div class="daily-copy">
+          <span class="page-chip" style="background: white">🔥 Every day</span>
+          <h2>The Daily Drop</h2>
+          <p>All day, players pitch prompt ideas and the community votes. At midnight the winner goes live — one prompt, everyone playing it.</p>
+          <a href="#download" class="btn btn-primary">Get in on today's vote</a>
+        </div>
+        <div class="ballot">
+          <span class="ballot-title">Today's contenders</span>
+          <div class="vote-pill leader"><span>👑 show us the last photo you took</span><span class="votes">🗳️ 21</span></div>
+          <div class="vote-pill"><span>impersonate your pet</span><span class="votes">🗳️ 17</span></div>
+          <div class="vote-pill"><span>explain your job like i'm five</span><span class="votes">🗳️ 9</span></div>
         </div>
       </div>
     </section>
@@ -177,7 +197,7 @@
     <section id="download" class="download">
       <div class="download-card">
         <h2>Don't Overthink It.</h2>
-        <p>Available on iOS and Android. Free to download.</p>
+        <p>Free on iOS and Android. Your first prompt is waiting.</p>
         <div class="store-buttons">
           <a href="#" class="store-btn">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -198,7 +218,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
-        <div class="footer-logo">prompted</div>
+        <a href="/" class="footer-logo">prompted</a>
         <div class="footer-links">
           <a href="/privacy">Privacy Policy</a>
           <a href="/terms">Terms of Service</a>
