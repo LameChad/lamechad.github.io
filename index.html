@@ -71,7 +71,17 @@
     }
   </style>
   <noscript>
-    <style>.prompt-card, .feature-card { opacity: 1; }</style>
+    <style>
+      .prompt-card, .feature-card { opacity: 1; }
+      /* Without JS, touch devices can't tap-to-flip: lay both faces flat */
+      @media (hover: none) {
+        .section-hint { display: none; }
+        .flip-inner { transform: none !important; }
+        .flip-face { backface-visibility: visible; -webkit-backface-visibility: visible; }
+        .flip-back { grid-area: auto; transform: none; margin-top: var(--space-sm); }
+        .flip-badge { display: none; }
+      }
+    </style>
   </noscript>
 </head>
 <body>
@@ -152,29 +162,70 @@
       </div>
     </main>
 
-    <!-- Features Section -->
+    <!-- Features Section: cards flip like prompts in the app —
+         the details stay hidden until you play the card -->
     <section id="features" class="features">
       <h2 class="section-title">How you play</h2>
+      <p class="section-hint">
+        <span class="hint-hover">These cards are hiding something. Hover one to flip it over.</span>
+        <span class="hint-tap">These cards are hiding something. Tap one to flip it over.</span>
+      </p>
       <div class="features-grid">
-        <div class="feature-card card-orange">
-          <div class="feature-number">1</div>
-          <h3>Pick a Prompt</h3>
-          <p>A prompt is the bit everyone films — funny, deep, or a total mystery that stays hidden until recording starts.</p>
+        <div class="feature-card" tabindex="0" role="button" aria-expanded="false" aria-label="Pick a Prompt — flip for the details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front card-orange">
+              <span class="flip-badge" aria-hidden="true">?</span>
+              <div class="feature-number">1</div>
+              <h3>Pick a Prompt</h3>
+            </div>
+            <div class="flip-face flip-back card-orange">
+              <span class="flip-badge" aria-hidden="true">!</span>
+              <span class="flip-back-title" aria-hidden="true">Pick a Prompt</span>
+              <p>A prompt is the bit everyone films — funny, deep, or a total mystery that stays hidden until recording starts.</p>
+            </div>
+          </div>
         </div>
-        <div class="feature-card card-blue">
-          <div class="feature-number">2</div>
-          <h3>Play</h3>
-          <p>Film whatever — a few seconds of you, inspired by the prompt. Play it again whenever, and every take joins your reel.</p>
+        <div class="feature-card" tabindex="0" role="button" aria-expanded="false" aria-label="Play — flip for the details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front card-blue">
+              <span class="flip-badge" aria-hidden="true">?</span>
+              <div class="feature-number">2</div>
+              <h3>Play</h3>
+            </div>
+            <div class="flip-face flip-back card-blue">
+              <span class="flip-badge" aria-hidden="true">!</span>
+              <span class="flip-back-title" aria-hidden="true">Play</span>
+              <p>Film whatever — a few seconds of you, inspired by the prompt. Play it again whenever, and every take joins your reel.</p>
+            </div>
+          </div>
         </div>
-        <div class="feature-card card-pink">
-          <div class="feature-number">3</div>
-          <h3>Unlock the Feed</h3>
-          <p>No lurking — No peaking<br>Everyone else's take stays hidden until you've played the prompt yourself first.</p>
+        <div class="feature-card" tabindex="0" role="button" aria-expanded="false" aria-label="Unlock the Feed — flip for the details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front card-pink">
+              <span class="flip-badge" aria-hidden="true">?</span>
+              <div class="feature-number">3</div>
+              <h3>Unlock the Feed</h3>
+            </div>
+            <div class="flip-face flip-back card-pink">
+              <span class="flip-badge" aria-hidden="true">!</span>
+              <span class="flip-back-title" aria-hidden="true">Unlock the Feed</span>
+              <p>No lurking — No peaking<br>Everyone else's take stays hidden until you've played the prompt yourself first.</p>
+            </div>
+          </div>
         </div>
-        <div class="feature-card card-red">
-          <div class="feature-number flame">🔥</div>
-          <h3>One-Shot Mode</h3>
-          <p>Hardcore prompts give you a single take. No do-overs. Whatever happens, happens.</p>
+        <div class="feature-card" tabindex="0" role="button" aria-expanded="false" aria-label="One-Shot Mode — flip for the details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front card-red">
+              <span class="flip-badge" aria-hidden="true">?</span>
+              <div class="feature-number flame">🔥</div>
+              <h3>One-Shot Mode</h3>
+            </div>
+            <div class="flip-face flip-back card-red">
+              <span class="flip-badge" aria-hidden="true">!</span>
+              <span class="flip-back-title" aria-hidden="true">One-Shot Mode</span>
+              <p>Hardcore prompts give you a single take. No do-overs. Whatever happens, happens.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -253,6 +304,22 @@
 
     document.querySelectorAll('.feature-card, .prompt-card').forEach(el => {
       observer.observe(el);
+    });
+
+    // Flip cards: hover flips on pointer devices (pure CSS); tapping or
+    // clicking toggles the pin, and Enter/Space works from the keyboard
+    document.querySelectorAll('.feature-card').forEach(card => {
+      const flip = () => {
+        const flipped = card.classList.toggle('flipped');
+        card.setAttribute('aria-expanded', flipped);
+      };
+      card.addEventListener('click', flip);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          flip();
+        }
+      });
     });
   </script>
 </body>

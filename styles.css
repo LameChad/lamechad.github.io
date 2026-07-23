@@ -311,6 +311,28 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* The flip hint sits between the title and the grid, so the title
+   hands its bottom margin to the hint */
+.features .section-title {
+  margin-bottom: var(--space-xs);
+}
+
+.section-hint {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: var(--space-xl);
+}
+
+.section-hint .hint-tap {
+  display: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .section-hint .hint-hover { display: none; }
+  .section-hint .hint-tap { display: inline; }
+}
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -319,11 +341,16 @@ body {
   gap: var(--space-lg);
 }
 
+/* Feature cards flip like the app's prompt cards: the details hide
+   on the back until you play the card — same gate as the feed.
+   Hover flips on pointer devices, tap/click toggles .flipped via JS. */
 .feature-card {
-  padding: var(--space-lg);
-  border-radius: var(--border-radius);
-  border: var(--border-width) solid #000;
-  box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
+  display: grid;
+  perspective: 1100px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.5s, transform 0.5s;
@@ -332,6 +359,94 @@ body {
 .feature-card.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.feature-card:focus-visible {
+  outline: 3px dashed #000;
+  outline-offset: 5px;
+}
+
+/* Springy turn, same overshoot family as the hero cards' pop-in */
+.flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+.feature-card.flipped .flip-inner,
+.feature-card:focus-visible .flip-inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .feature-card:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Both faces share one grid cell so the card sizes to the taller face */
+.flip-face {
+  grid-area: 1 / 1;
+  position: relative;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: var(--space-lg);
+  border: var(--border-width) solid #000;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-x) var(--shadow-y) 0 #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Pre-rotated so it reads correctly once the card turns */
+.flip-back {
+  transform: rotateY(180deg);
+  gap: var(--space-xs);
+}
+
+/* The mystery badge — same language as the app's hidden prompts:
+   ? on the front, ! once you've earned the reveal */
+.flip-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 2.1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 50%;
+}
+
+.flip-front .flip-badge {
+  animation: badge-wiggle 3.6s ease-in-out infinite;
+}
+
+.feature-card:nth-child(2) .flip-front .flip-badge { animation-delay: 0.45s; }
+.feature-card:nth-child(3) .flip-front .flip-badge { animation-delay: 0.9s; }
+.feature-card:nth-child(4) .flip-front .flip-badge { animation-delay: 1.35s; }
+
+@keyframes badge-wiggle {
+  0%, 82%, 100% { transform: rotate(0); }
+  86% { transform: rotate(14deg); }
+  90% { transform: rotate(-12deg); }
+  94% { transform: rotate(8deg); }
+  97% { transform: rotate(-4deg); }
+}
+
+.flip-back-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
 }
 
 .feature-number {
@@ -362,9 +477,8 @@ body {
 
 .feature-card h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  margin-bottom: var(--space-sm);
 }
 
 .feature-card p {
@@ -723,6 +837,14 @@ body {
     transition: none;
     opacity: 1;
     transform: none;
+  }
+
+  .flip-inner {
+    transition: none;
+  }
+
+  .flip-front .flip-badge {
+    animation: none;
   }
 
   html {
