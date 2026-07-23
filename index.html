@@ -72,13 +72,13 @@
   </style>
   <noscript>
     <style>
-      .prompt-card, .feature-card { opacity: 1; }
+      .prompt-card { opacity: 1; transform: scale(1) rotate(var(--rot, 0deg)); }
+      .feature-card { opacity: 1; transform: none; }
       /* Without JS, touch devices can't tap-to-flip: lay both faces flat */
       @media (hover: none) {
         .section-hint { display: none; }
-        .flip-inner { transform: none !important; }
-        .flip-face { backface-visibility: visible; -webkit-backface-visibility: visible; }
-        .flip-back { grid-area: auto; transform: none; margin-top: var(--space-sm); }
+        .flip-face { transform: none !important; backface-visibility: visible; -webkit-backface-visibility: visible; }
+        .flip-back { grid-area: auto; margin-top: var(--space-sm); }
         .flip-badge { display: none; }
       }
     </style>
