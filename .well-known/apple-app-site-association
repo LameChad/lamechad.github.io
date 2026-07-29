@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "XXXXXXXXXX.io.bardic.prompted",
+        "appID": "XXXXXXXXXX.prompted.media.app",
         "paths": [
           "/post/*",
           "/user/*"
@@ -13,7 +13,7 @@
   },
   "webcredentials": {
     "apps": [
-      "XXXXXXXXXX.io.bardic.prompted"
+      "XXXXXXXXXX.prompted.media.app"
     ]
   }
 }
