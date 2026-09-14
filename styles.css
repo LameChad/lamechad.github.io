@@ -625,9 +625,22 @@ body {
   color: var(--brand-orange);
 }
 
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
 .footer-copy {
   color: #888;
   font-size: 0.875rem;
+}
+
+.footer-trademark {
+  color: #888;
+  font-size: 0.8125rem;
 }
 
 /* ============================================
